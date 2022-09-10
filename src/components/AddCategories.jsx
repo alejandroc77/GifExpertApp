@@ -1,20 +1,26 @@
 import { useState } from "react";
 
-export const AddCategories = () => {
-  const [input, setValue] = useState("Dragon ball");
+export const AddCategories = ({ onAddCategories }) => {
+  const [inputValue, setInputValue] = useState("");
 
-  function agg(evet) {
-    //     console.log(evet.target.value);
-    setValue();
+  function onInputChange({ target }) {
+    setInputValue(target.value);
+  }
+
+  function onSubmit(event) {
+    event.preventDefault(); //Para que no se recargue el formulario
+    const resul = inputValue.trim(); // trim elimina espacios en blanco
+    if (inputValue.trim().length <= 1) return;
+    onAddCategories(resul);
   }
   return (
-    <input
-      onChange={(evet) => {
-        agg(evet);
-      }}
-      type="text"
-      placeholder="Buscat Gifs"
-      value={input}
-    />
+    <form onSubmit={onSubmit}>
+      <input
+        placeholder="Buscat Gifs"
+        value={inputValue}
+        type="text"
+        onChange={onInputChange}
+      />
+    </form>
   );
 };
