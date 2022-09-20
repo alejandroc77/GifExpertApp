@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { AddCategories } from "./components/AddCategories.jsx";
+import { GifGrid } from "./components/GifGrid";
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState(["One Punch", " Dragon Ball"]);
+  const [categories, setCategories] = useState(["One Punch"]);
 
   const onNuevaCategoria = (newCategories) => {
     if (categories.includes(newCategories)) return; // validamos para que no se repita el nombre
@@ -9,16 +10,12 @@ export const GifExpertApp = () => {
   };
   return (
     <>
-      {/* titulo */}
       <h1>GitExpertApp</h1>
-      {/* input */}
       <AddCategories onAddCategories={onNuevaCategoria} />
-      {/* lista de los gifs */}
-      <ol>
-        {categories.map((element) => {
-          return <li key={element}>{element}</li>;
-        })}
-      </ol>
+
+      {categories.map((element) => (
+        <GifGrid key={element} categoria={element} />
+      ))}
     </>
   );
 };
