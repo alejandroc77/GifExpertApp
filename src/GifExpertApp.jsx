@@ -4,6 +4,7 @@ export const GifExpertApp = () => {
   const [categories, setCategories] = useState(["One Punch", " Dragon Ball"]);
 
   const onNuevaCategoria = (newCategories) => {
+    if (categories.includes(newCategories)) return; // validamos para que no se repita el nombre
     setCategories([newCategories, ...categories]);
   };
   return (
@@ -13,7 +14,6 @@ export const GifExpertApp = () => {
       {/* input */}
       <AddCategories onAddCategories={onNuevaCategoria} />
       {/* lista de los gifs */}
-      {/* <button onClick={agregarCategoria}>Agregar</button> */}
       <ol>
         {categories.map((element) => {
           return <li key={element}>{element}</li>;
