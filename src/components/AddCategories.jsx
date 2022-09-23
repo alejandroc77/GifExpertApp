@@ -4,7 +4,7 @@ export const AddCategories = ({ onAddCategories }) => {
   const [inputValue, setInputValue] = useState("");
 
   function onInputChange({ target }) {
-    setInputValue(target.value);
+    setInputValue(target.value); //para poder escribir en el input
   }
 
   function onSubmit(event) {
