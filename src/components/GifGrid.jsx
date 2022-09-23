@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import { getGifs } from "../helpers/getGifs";
-
+useEffect;
 export const GifGrid = ({ categoria }) => {
-  getGifs(categoria);
+  useEffect(() => {
+    getGifs(categoria);
+  }, []);
+
   return (
     <>
       <ul>
